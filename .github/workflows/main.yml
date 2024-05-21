@@ -1,0 +1,24 @@
+name: Handle WhatsApp Inbound Messages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  handle_inbound_message:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Run JavaScript Action
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Workflow
+        run: node index.js
